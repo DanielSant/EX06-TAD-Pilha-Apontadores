@@ -1,6 +1,4 @@
-#include <iostream>
-
-using namespace std;
+#include "Pilha_Apontadores.h"
 
 int main()
 {
