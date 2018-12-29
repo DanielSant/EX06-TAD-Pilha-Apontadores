@@ -104,11 +104,32 @@ void desempilha(TPilha& pilha)
     else
     {
         apontador aux = pilha.primeiro->proximo;
+        textcolor(RED);
         cout << "\n Elemente removido |" << aux->item.chave << "|";
-        Sleep(3000);
+        Sleep(2000);
+        textcolor(WHITE);
         pilha.primeiro->proximo = aux->proximo;
         if(pilha.primeiro->proximo == NULL)
             pilha.ultimo = pilha.primeiro;
+    }
+}
+
+void topo(TPilha& pilha)
+{
+    if(vazia(pilha))
+    {
+        cout << "\n Não há item no topo para mostrar!";
+        cout << "\n Pressione uma tecla para voltar.";
+        getch();
+    }
+    else
+    {
+        apontador aux = pilha.primeiro->proximo;
+        cout << "\n Elemento do TOPO:\n\n";
+        textcolor(GREEN);
+        cout << "\t|" << aux->item.chave << "|";
+        Sleep(3000);
+        textcolor(WHITE);
     }
 }
 
@@ -118,6 +139,7 @@ void imprime(TPilha& pilha)
         cout << "\n Não há o que imprimir, pilha vazia!" << endl;
     else
     {
+        cout << " Elementos na PILHA:\n";
         cout << endl;
         apontador aux = pilha.primeiro->proximo;
         while(aux != NULL)
@@ -125,6 +147,7 @@ void imprime(TPilha& pilha)
             cout << "\t|" << aux->item.chave << "|" << endl;
             aux = aux->proximo;
         }
+        cout << " |===============|\n";
     }
 }
 

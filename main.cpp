@@ -22,10 +22,14 @@ int main()
                 desempilha(pilha);
                 break;
             case TOPO:
-                //topo();
+                topo(pilha);
                 break;
             case IMPRIME:
+                textcolor(GREEN);
                 imprime(pilha);
+                cout << "\n Aperte uma tecla to back.";
+                getch();
+                textcolor(WHITE);
                 break;
             default:
                 cout << "\n Opção inválida!\n";
