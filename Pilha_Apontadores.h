@@ -37,8 +37,9 @@ enum opcoes
 // =----------------------------------
 
 void cria(TPilha& pilha);
-opcoes menu();
+opcoes menu(TPilha& pilha);
 bool vazia(TPilha& pilha);
+void setDados(TInfo& item);
 void empilha(TPilha& pilha, TInfo item);
 void desempilha(TPilha& pilha);
 void topo(TPilha& pilha);
@@ -53,10 +54,11 @@ void cria(TPilha& pilha)
     pilha.primeiro->proximo = NULL;
 }
 
-opcoes menu()
+opcoes menu(TPilha& pilha)
 {
     int o;
     clrscr();
+    imprime(pilha);
     cout << "\n Menu:" << endl
         << " 1 - Empilhar\n"
         << " 2 - Desempilhar\n"
@@ -65,8 +67,45 @@ opcoes menu()
         << " 5 - Sair\n"
         << " Digite uma opção: ";
     scanf("%d", &o);
-    //fflush(stdin);
+    fflush(stdin);
     return (opcoes) o;
+}
+
+bool vazia(TPilha& pilha)
+{
+    return pilha.primeiro == pilha.ultimo ? true : false;
+}
+
+void setDados(TInfo& item)
+{
+    cout << "\n Informe o código: ";
+    cin >> item.chave;
+}
+
+void empilha(TPilha& pilha, TInfo item)
+{
+    apontador p = (apontador) malloc(sizeof(struct nodoPilha));
+    p->item = item;
+    p->proximo = pilha.primeiro->proximo;
+    pilha.primeiro->proximo = p;
+    if (p->proximo == NULL)
+        pilha.ultimo = p;
+}
+
+void imprime(TPilha& pilha)
+{
+    if(vazia(pilha))
+        cout << "\n Não há o que imprimir, pilha vazia!" << endl;
+    else
+    {
+        cout << endl;
+        apontador aux = pilha.primeiro->proximo;
+        while(aux != NULL)
+        {
+            cout << "\t|" << aux->item.chave << "|" << endl;
+            aux = aux->proximo;
+        }
+    }
 }
 
 #endif // PILHA_APONTADORES_H_INCLUDED

@@ -6,13 +6,18 @@ int main()
 {
     setlocale(LC_ALL, "portuguese");
     opcoes opc;
+    TPilha pilha;
+    TInfo item;
 
-    while((opc = menu()) != FIM)
+    cria(pilha);
+
+    while((opc = menu(pilha)) != FIM)
     {
         switch(opc)
         {
             case EMPILHA:
-                //empilha();
+                setDados(item);
+                empilha(pilha, item);
                 break;
             case DESEMPILHA:
                 //desempilha();
@@ -21,7 +26,7 @@ int main()
                 //topo();
                 break;
             case IMPRIME:
-                //imprime();
+                imprime(pilha);
                 break;
             default:
                 cout << "\n Opção inválida!\n";
