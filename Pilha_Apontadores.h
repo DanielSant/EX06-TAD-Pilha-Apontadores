@@ -8,6 +8,7 @@ using namespace std;
 #include <stdlib.h>
 #include <conio2.h>
 #include <stdio.h>
+#include <windows.h>
 
 // =----------------------------------
 
@@ -90,6 +91,25 @@ void empilha(TPilha& pilha, TInfo item)
     pilha.primeiro->proximo = p;
     if (p->proximo == NULL)
         pilha.ultimo = p;
+}
+
+void desempilha(TPilha& pilha)
+{
+    if(vazia(pilha))
+    {
+        cout << "\n ERRO: A pilha já está vazia!";
+        cout << "\n Pressione uma tecla para continuar";
+        getch();
+    }
+    else
+    {
+        apontador aux = pilha.primeiro->proximo;
+        cout << "\n Elemente removido |" << aux->item.chave << "|";
+        Sleep(3000);
+        pilha.primeiro->proximo = aux->proximo;
+        if(pilha.primeiro->proximo == NULL)
+            pilha.ultimo = pilha.primeiro;
+    }
 }
 
 void imprime(TPilha& pilha)

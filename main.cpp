@@ -1,6 +1,5 @@
 #include "Pilha_Apontadores.h"
 #include <locale.h>
-#include <windows.h>
 
 int main()
 {
@@ -20,7 +19,7 @@ int main()
                 empilha(pilha, item);
                 break;
             case DESEMPILHA:
-                //desempilha();
+                desempilha(pilha);
                 break;
             case TOPO:
                 //topo();
