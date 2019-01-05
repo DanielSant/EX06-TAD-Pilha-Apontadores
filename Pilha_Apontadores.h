@@ -111,6 +111,7 @@ void desempilha(TPilha& pilha)
         pilha.primeiro->proximo = aux->proximo;
         if(pilha.primeiro->proximo == NULL)
             pilha.ultimo = pilha.primeiro;
+        free(aux);
     }
 }
 
